@@ -1,5 +1,11 @@
-import functools
-import time
+import time, functools
+import jax.numpy as np
+
+
+def one_hot(x, k, dtype=np.float32):
+    """Create a one-hot encoding of x for k classes """
+    return np.array(x[:, None] == np.arange(k), dtype)
+
 
 def timer(func):
     """Decorator for timing function execution. From
